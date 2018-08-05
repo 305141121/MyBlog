@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>MyBlog</title>
+<head>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+	<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+	<script src="{% static 'blogs/main.js' %}"></script>
+	<script src="{% static 'kurumi-live2d/live2d.js' %}"></script>	
+	<script src="https://pandao.github.io/editor.md/editormd.min.js"></script>
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<div class="navigator">			
+			<a id="passages">杂谈</a>
+			<a id="album">相册</a>
+			<a id="about">关于</a>				
+		</div>	
+
+		<div class="passages">	
+
+			<div id="passage" style="display: none">				
+			</div>	
+
+			<!-- 文章列表栏 -->
+			<ul>
+				{% for post in posts %}
+				<li class="post-item" name="{{ post }}"><a href="#">{{ post }}</a></li>
+				{% endfor %}
+			</ul>
+
+			
+
+			<!-- 页数 -->
+			<div class="page">			
+				{% for i in count %}
+				<a class="page-item" href="#">{{ i }}</a>
+				{% endfor %}			
+			</div>
+		</div>
+
+		<div class="about">
+			<p>这里啥都没哟</p>
+		</div>
+
+		<div class="album">
+			<p>这里啥都没哟</p>
+		</div>
+
+
+		
+	</div>
+	
+	<div class="live2d">	
+		<canvas id="kurumi" width="400" height="400" class="live2d"></canvas>
+	</div>
+
+	<script>
+    		loadlive2d("kurumi","{% static 'kurumi-live2d/kurumi.json' %}");
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+body{
+	background-image: url("images/bg1.jpg");
+	background-size: cover;
+	font-family: 微软雅黑;
+    
+}
+
+::-webkit-scrollbar{width:5px;background:transparent;}
+::-webkit-scrollbar-thumb{background:#ccc;border-radius: 6px;}
+
+.wrapper {
+	left: 15%;
+	right: 30%;
+	top: 10%;
+	bottom: 5%;
+	background-color: #fff;
+	opacity: 0.7;
+	border: 2px solid #a1a1a1;
+	padding: 10px 10px; 
+	border-radius: 10px;
+	position: absolute;
+}
+
+
+ul {
+	list-style-type:none;
+}
+
+a
+{
+	display: block;
+	width:32%;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:grey;
+	float:left;
+	padding:6px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+
+#passage a,.about a{
+	width: 20px;
+	background-color: white;
+}
+a:hover{
+	opacity: 0.4;
+}
+
+.navigator{
+	text-align: center;
+	display: flex;
+}
+.backgroundImg{
+	text-align: center;
+	position: fixed;
+}
+
+.passages, .about{
+	height: 80%;
+	overflow: auto;
+}
+
+.passages, .about, .album{
+	margin: 5px;
+	padding: 10px 5px; 	
+}
+
+.navigator ul
+{
+	margin:0;
+	padding:0;
+	overflow: hidden;
+	padding-top:6px;
+	padding-bottom:6px;
+
+}
+
+.navigator li
+{
+	flex:1;
+}
+
+
+
+.post-item{
+	display: flex;
+	justify-content: center;
+	padding: 5px;
+	text-align: center;
+}
+
+.post-item a{
+	color: grey;
+	background-color: white;
+}
+
+.post-item a{
+	float: left;
+}
+
+.page {
+
+	display: inline-flex;
+	position: absolute;
+	bottom: 0;
+}
+
+.page-item {
+	color: grey;
+	background-color: white;
+	font-size: 14px;
+	line-height: normal;
+	display: inline-block;
+	align-items: center;
+}
+
+.about,.album{
+	display: none;
+}
+
+
+
+
+.edit {
+	font-size: 18px;
+	text-decoration: none;
+	border: none;
+	background-color: white;	
+	color: white;
+	position: absolute;
+	bottom: 5%;
+	right: 5%;
+}
+
+#editor{
+
+	width: 95%;
+	height: 95%;
+	padding: 20px;
+	border: none;
+	display: none;
+}
+
+.live2d {
+	position: fixed;
+	right:0%;
+	bottom: 0%;
+}

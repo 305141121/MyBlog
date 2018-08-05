@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://pandao.github.io/editor.md/editormd.min.js"></script>
+</head>
+<body>
+	<link rel="stylesheet" href="https://pandao.github.io/editor.md/css/editormd.min.css" />
+	<div id='editormd'>
+		<textarea style='display:none;'>### Hello Editor.md !</textarea>
+	</div>
+	<button id="return" style="position: relative; bottom: 0;left: 0;">返回</button>
+	<button id="submit" style="position: relative; bottom: 0;right: 0;">提交</button>
+	<script type="text/javascript">
+		var testEditor;
+		var passageName;	
+	    $(function() {
+	    	// 加载编辑器
+	    	passageName = $("#passage",parent.document).attr("name");
+	    	$.get("/static/posts/"+passageName+".md",function(md){
+		    		testEditor = editormd("editormd", {
+			            path : "https://pandao.github.io/editor.md/lib/",
+			            markdown : md
+		       		 });    	
+
+		    // 在编辑器加载完成后调整编辑器样式
+			var checkEditor = setInterval(function(){
+				if($(".CodeMirror").html() != 	undefined){
+					$(".CodeMirror").css( "height", "400px" );      	
+	   				$(".editormd-preview").css( "height", "100%" );
+	   				clearInterval(checkEditor);
+				}
+			},500);	    	   
+    		});
+	    });
+    // 编辑器返回至文章列表
+    $("#return").click(function(){
+    	$("#editor",parent.document).remove();
+    	$(".passages",parent.document).fadeToggle(200);	
+    });
+
+    // 修改文章按钮
+    $("#submit").click(function(){
+    	var passwd = prompt("请输入密码");
+    	var passageJSON = {
+    		"passwd": passwd,
+    		"name": passageName,
+    		"content": $("#editormd textarea").html()
+    	}
+    	$.post("/blogs/submit", 
+    		JSON.stringify(passageJSON), 
+    		function(data, status){  			
+    				alert("修改成功"); 			   				
+    		})
+    	.fail(function(){
+    		alert("修改被机关截获了！");
+    	});
+    });
+
+	</script>
+</body>
+</html>
