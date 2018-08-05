@@ -32,7 +32,7 @@ def submit(request):
     name = js["name"]
     content = js["content"]
     passwd = js["passwd"]
-    if passwd != "chenlihang":
+    if passwd != "******":
         return HttpResponseNotAllowed()
     path = os.path.join(settings.BASE_DIR, "static/posts")
     with open(path+"/"+name+".md","w",encoding="utf-8") as f:
