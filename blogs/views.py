@@ -32,7 +32,11 @@ def submit(request):
     name = js["name"]
     content = js["content"]
     passwd = js["passwd"]
-    if passwd != "chenlihang":
+    import configparser
+    cf = configparser.ConfigParser()
+    configPath = os.path.join(os.path.dirname(os.path.realpath(__file__)) ,"config.ini")
+    cf.read(configPath)
+    if passwd != cf.get("baseconfig","passwd"):
         return HttpResponseNotAllowed()
     path = os.path.join(settings.BASE_DIR, "static/posts")
     with open(path+"/"+name+".md","w",encoding="utf-8") as f:
